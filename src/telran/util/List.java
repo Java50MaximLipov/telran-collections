@@ -18,4 +18,5 @@ public interface List<T> extends Collection<T> {
 	int indexOf(Predicate<T> predicate);
 
 	int lastIndexOf(Predicate<T> predicate);
+
 }

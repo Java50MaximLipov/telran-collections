@@ -16,5 +16,4 @@ public interface Collection<T> extends Iterable<T> {
 	boolean addAll(Collection<T> collection);
 
 	boolean removeAll(Collection<T> collection);
-
 }
