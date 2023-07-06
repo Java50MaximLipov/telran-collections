@@ -26,15 +26,15 @@ abstract class CollectionTest {
 	@Test
 	void removeTest() {
 		Integer[] expected1 = { -20, 8, 14, 30, 12, 100 };
-		Integer[] expected2 = { -20, 8, 14, 30, 12, };
-		Integer[] expected3 = { -20, 8, 30, 12, };
+		Integer[] expected2 = { -20, 8, 14, 30, 12 };
+		Integer[] expected3 = { -20, 8, 30, 12 };
 		assertTrue(collection.remove(10));
 		assertArrayEquals(expected1, collection.toArray(new Integer[0]));
 		assertTrue(collection.remove(100));
 		assertArrayEquals(expected2, collection.toArray(new Integer[0]));
 		assertTrue(collection.remove(14));
 		assertArrayEquals(expected3, collection.toArray(new Integer[0]));
-		assertFalse(collection.remove(1000000));
+		assertFalse(collection.remove(100000));
 		assertArrayEquals(expected3, collection.toArray(new Integer[0]));
 	}
 
@@ -52,8 +52,8 @@ abstract class CollectionTest {
 
 	@Test
 	void containsAllTest() {
-		Integer[] ar1 = { 10, -20 };
-		Integer[] ar2 = { 10, 1000000 };
+		Integer ar1[] = { 10, -20 };
+		Integer ar2[] = { 10, 100000 };
 		Collection<Integer> col1 = getCollection(ar1);
 		Collection<Integer> col2 = getCollection(ar2);
 		assertTrue(collection.containsAll(col1));
@@ -66,7 +66,7 @@ abstract class CollectionTest {
 		Arrays.fill(ar, 10);
 		Integer[] actual = collection.toArray(ar);
 		assertTrue(ar == actual);
-		assertNull(ar[collection.size()]);
+		assertNull(actual[collection.size()]);
 		assertArrayEquals(numbers, Arrays.copyOf(actual, collection.size()));
 	}
 
@@ -96,5 +96,4 @@ abstract class CollectionTest {
 	}
 
 	protected abstract Collection<Integer> getCollection(Integer[] ar1);
-
 }

@@ -58,14 +58,13 @@ public class ArrayList<T> implements List<T> {
 
 	private void reallocate() {
 		array = Arrays.copyOf(array, array.length * 2);
-
 	}
 
-	@Override
-	public boolean removeIf(Predicate<T> predicate) {
-		// TODO try to rewrite method removeIf with complexity O[N]
-		return false;
-	}
+//	@Override
+//	public boolean removeIf(Predicate<T> predicate) {
+//		// TODO try to rewrite method removeIf with complexity O[N]
+//		return false;
+//	}
 
 	@Override
 	public int size() {
@@ -117,6 +116,7 @@ public class ArrayList<T> implements List<T> {
 		if (index < 0 || index > bounder) {
 			throw new IndexOutOfBoundsException(index);
 		}
+
 	}
 
 	@Override

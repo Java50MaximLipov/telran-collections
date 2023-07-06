@@ -34,5 +34,4 @@ public interface List<T> extends Collection<T> {
 	default boolean contains(Object pattern) {
 		return indexOf(pattern) >= 0;
 	}
-
 }

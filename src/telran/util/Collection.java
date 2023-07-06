@@ -38,7 +38,7 @@ public interface Collection<T> extends Iterable<T> {
 		return res;
 	}
 
-	default boolean removeIf(Predicate<T> predicate) {
+	default public boolean removeIf(Predicate<T> predicate) {
 		Iterator<T> it = iterator();
 		int oldSize = size();
 		while (it.hasNext()) {
@@ -51,7 +51,7 @@ public interface Collection<T> extends Iterable<T> {
 
 	int size();
 
-	default boolean addAll(Collection<T> collection) {
+	default public boolean addAll(Collection<T> collection) {
 		int oldSize = size();
 		for (T obj : collection) {
 			add(obj);
@@ -66,5 +66,4 @@ public interface Collection<T> extends Iterable<T> {
 		}
 		return oldSize > size();
 	}
-
 }
