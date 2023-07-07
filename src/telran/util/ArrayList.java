@@ -37,6 +37,7 @@ public class ArrayList<T> implements List<T> {
 			ArrayList.this.remove(--currentIndex);
 			flNext = false;
 		}
+
 	}
 
 	public ArrayList(int capacity) {
@@ -60,11 +61,22 @@ public class ArrayList<T> implements List<T> {
 		array = Arrays.copyOf(array, array.length * 2);
 	}
 
-//	@Override
-//	public boolean removeIf(Predicate<T> predicate) {
-//		// TODO try to rewrite method removeIf with complexity O[N]
-//		return false;
-//	}
+	@Override
+	public boolean removeIf(Predicate<T> predicate) {
+		int oldSize = size;
+		int indexDest = 0;
+		for (int indexSrc = 0; indexSrc < oldSize; indexSrc++) {
+			if (predicate.test(array[indexSrc])) {
+				size--;
+			} else {
+				array[indexDest++] = array[indexSrc];
+			}
+		}
+		for (int i = size; i < oldSize; i++) {
+			array[i] = null;
+		}
+		return oldSize > size;
+	}
 
 	@Override
 	public int size() {
@@ -85,6 +97,7 @@ public class ArrayList<T> implements List<T> {
 		System.arraycopy(array, index, array, index + 1, size - index);
 		array[index] = obj;
 		size++;
+
 	}
 
 	@Override
@@ -109,14 +122,6 @@ public class ArrayList<T> implements List<T> {
 		System.arraycopy(array, index + 1, array, index, size - index);
 		array[size] = null;
 		return res;
-	}
-
-	private void indexValidation(int index, boolean sizeInclusive) {
-		int bounder = sizeInclusive ? size : size - 1;
-		if (index < 0 || index > bounder) {
-			throw new IndexOutOfBoundsException(index);
-		}
-
 	}
 
 	@Override
