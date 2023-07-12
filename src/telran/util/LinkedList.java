@@ -75,6 +75,7 @@ public class LinkedList<T> implements List<T> {
 		removedNode.obj = null;
 		prevNode.next = nextNode;
 		nextNode.prev = prevNode;
+
 	}
 
 	private void removeTail() {

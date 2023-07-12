@@ -17,7 +17,6 @@ public class ArrayList<T> implements List<T> {
 
 		@Override
 		public boolean hasNext() {
-
 			return currentIndex < size;
 		}
 
@@ -38,6 +37,7 @@ public class ArrayList<T> implements List<T> {
 			ArrayList.this.remove(--currentIndex);
 			flNext = false;
 		}
+
 	}
 
 	public ArrayList(int capacity) {
@@ -80,13 +80,11 @@ public class ArrayList<T> implements List<T> {
 
 	@Override
 	public int size() {
-
 		return size;
 	}
 
 	@Override
 	public Iterator<T> iterator() {
-
 		return new ArrayListIterator();
 	}
 
@@ -99,6 +97,7 @@ public class ArrayList<T> implements List<T> {
 		System.arraycopy(array, index, array, index + 1, size - index);
 		array[index] = obj;
 		size++;
+
 	}
 
 	@Override
@@ -109,7 +108,6 @@ public class ArrayList<T> implements List<T> {
 
 	@Override
 	public T set(int index, T obj) {
-
 		T res = get(index);
 		array[index] = obj;
 		return res;
