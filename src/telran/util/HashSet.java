@@ -1,6 +1,7 @@
 package telran.util;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class HashSet<T> implements Set<T> {
@@ -8,6 +9,55 @@ public class HashSet<T> implements Set<T> {
 	private LinkedList<T>[] hashTable;
 	private float factor = 0.75f;
 	private int size;
+
+	private class HashSetIterator implements Iterator<T> {
+		int index = 0;
+		Iterator<T> it;
+		boolean wasNext = false;
+		T next = getNext();
+		T current;
+
+		@Override
+		public boolean hasNext() {
+			return index < hashTable.length;
+		}
+
+		@Override
+		public T next() {
+			if (!hasNext()) {
+				throw new NoSuchElementException();
+			}
+			wasNext = true;
+			current = next;
+			next = getNext();
+			return current;
+		}
+
+		private T getNext() {
+			for (int i = index; index < hashTable.length; i++, index++) {
+				if (hashTable[i] != null && hashTable[i].size() > 0) {
+					if (it == null) {
+						it = hashTable[i].iterator();
+					}
+					if (it.hasNext()) {
+						return it.next();
+					} else {
+						it = null;
+					}
+				}
+			}
+			return null;
+		}
+
+		@Override
+		public void remove() {
+			if (!wasNext) {
+				throw new IllegalStateException();
+			}
+			HashSet.this.remove(current);
+			wasNext = false;
+		}
+	}
 
 	@SuppressWarnings("unchecked")
 	public HashSet(int tableLength) {
@@ -88,8 +138,7 @@ public class HashSet<T> implements Set<T> {
 
 	@Override
 	public Iterator<T> iterator() {
-		// TODO Auto-generated method stub
-		return null;
+		return new HashSetIterator();
 	}
 
 	@Override
