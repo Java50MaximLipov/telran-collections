@@ -24,4 +24,5 @@ public abstract class SetTest extends CollectionTest {
 		assertEquals(numbers[1], ((Set<Integer>) collection).get(numbers[1]));
 		assertNull(((Set<Integer>) collection).get(100000));
 	}
+
 }

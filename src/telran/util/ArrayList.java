@@ -37,7 +37,6 @@ public class ArrayList<T> implements List<T> {
 			ArrayList.this.remove(--currentIndex);
 			flNext = false;
 		}
-
 	}
 
 	public ArrayList(int capacity) {
@@ -97,7 +96,6 @@ public class ArrayList<T> implements List<T> {
 		System.arraycopy(array, index, array, index + 1, size - index);
 		array[index] = obj;
 		size++;
-
 	}
 
 	@Override

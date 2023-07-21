@@ -48,6 +48,7 @@ public class LinkedList<T> implements List<T> {
 			removeNode(removedNode);
 			flNext = false;
 		}
+
 	}
 
 	@Override
@@ -75,7 +76,6 @@ public class LinkedList<T> implements List<T> {
 		removedNode.obj = null;
 		prevNode.next = nextNode;
 		nextNode.prev = prevNode;
-
 	}
 
 	private void removeTail() {
@@ -99,7 +99,6 @@ public class LinkedList<T> implements List<T> {
 	}
 
 	private void addNode(int index, Node<T> node) {
-
 		if (index == size) {
 			addTail(node);
 		} else if (index == 0) {
@@ -111,13 +110,13 @@ public class LinkedList<T> implements List<T> {
 	}
 
 	private void addMiddle(int index, Node<T> node) {
-
 		Node<T> nextNode = getNode(index);
 		Node<T> prevNode = nextNode.prev;
 		node.next = nextNode;
 		nextNode.prev = node;
 		prevNode.next = node;
 		node.prev = prevNode;
+
 	}
 
 	private void addHead(Node<T> node) {
