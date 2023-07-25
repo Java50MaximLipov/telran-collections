@@ -5,7 +5,6 @@ public class LinearRecursion {
 		if (a > 3) {
 			function(a - 1);
 		}
-
 	}
 
 	public static long factorial(int n) {
@@ -17,11 +16,9 @@ public class LinearRecursion {
 			res = n * factorial(n - 1);
 		}
 		return res;
-
 	}
 
 	public static long pow(int a, int b) {
-
 		// HW #17 definition
 		// Write method pow with following limitations
 		// No cycles
@@ -38,12 +35,10 @@ public class LinearRecursion {
 	}
 
 	private static int multiply(int a, long b) {
-
 		int res = 0;
 		if (b != 0) {
 			res = b < 0 ? multiply(-a, -b) : a + multiply(a, b - 1);
 		}
-
 		return res;
 	}
 
@@ -61,7 +56,6 @@ public class LinearRecursion {
 				displayArray(index + 1, ar, isReverse);
 			}
 		}
-
 	}
 
 	public static void displayReversedArray(int[] ar) {
@@ -91,7 +85,6 @@ public class LinearRecursion {
 			array[right] = tmp;
 			reverseArray(left + 1, array, right - 1);
 		}
-
 	}
 
 	public static int square(int x) {
@@ -101,17 +94,16 @@ public class LinearRecursion {
 		// No any additional methods
 		// No static fields
 		// Only + ; - arithmetic operations
+		// (x - 1) ^ 2 = x ^ 2 - 2x + 1
+		// x ^ 2 = 2x - 1 = x + x - 1
 		int res = 0;
 		if (x != 0) {
 			res = x < 0 ? square(-x) : x + x - 1 + square(x - 1);
 		}
-
 		return res;
 	}
 
 	public static boolean isSubstring(String string, String substr) {
-
-		// TODO
 		// returns true if a given 'substr' is indeed the //substring of a given
 		// `string`
 
@@ -130,9 +122,7 @@ public class LinearRecursion {
 		if (string.length() >= substr.length()) {
 			res = isEqual(string, substr) ? true : isSubstring(string.substring(1), substr);
 		}
-
 		return res;
-
 	}
 
 	private static boolean isEqual(String str, String substr) {
@@ -142,7 +132,6 @@ public class LinearRecursion {
 		} else if (str.charAt(0) == substr.charAt(0)) {
 			res = isEqual(str.substring(1), substr.substring(1));
 		}
-
 		return res;
 	}
 }
