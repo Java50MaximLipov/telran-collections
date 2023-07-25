@@ -63,6 +63,9 @@ class LinearRecursionTest {
 
 	@Test
 	void squareTest() {
+		assertEquals(0, square(0));
+		assertEquals(1, square(1));
+		assertEquals(4, square(2));
 		assertEquals(100, square(10));
 		assertEquals(100, square(-10));
 	}
