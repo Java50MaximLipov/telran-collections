@@ -1,12 +1,41 @@
 package telran.util;
 
 import java.util.Iterator;
-
+import telran.util.LinkedList.LinkedListIterator;
 import telran.util.LinkedList.Node;
 
 public class LinkedHashSet<T> implements Set<T> {
 	HashMap<T, Node<T>> map = new HashMap<>();
 	LinkedList<T> list = new LinkedList<>();
+
+	@SuppressWarnings("unchecked")
+	private class LinkedHashSetIterator implements Iterator<T> {
+
+		@SuppressWarnings("rawtypes")
+		LinkedListIterator it = (LinkedListIterator) list.iterator();
+
+		@Override
+		public boolean hasNext() {
+
+			return it.hasNext();
+		}
+
+		@Override
+		public T next() {
+
+			return (T) it.next();
+		}
+
+		@Override
+		public void remove() {
+
+			Node<T> removedNode = it.current != null ? it.current.prev : list.tail;
+			map.remove(removedNode.obj);
+			it.remove();
+
+		}
+
+	}
 
 	@Override
 	public boolean add(T obj) {
@@ -23,6 +52,7 @@ public class LinkedHashSet<T> implements Set<T> {
 	@Override
 	public boolean remove(Object pattern) {
 		boolean res = false;
+
 		if (map.containsKey(pattern)) {
 			res = true;
 			Node<T> node = map.remove(pattern);
@@ -33,17 +63,20 @@ public class LinkedHashSet<T> implements Set<T> {
 
 	@Override
 	public boolean contains(Object pattern) {
+
 		return map.containsKey(pattern);
 	}
 
 	@Override
 	public int size() {
+
 		return list.size();
 	}
 
 	@Override
 	public Iterator<T> iterator() {
-		return list.iterator();
+
+		return new LinkedHashSetIterator();
 	}
 
 	@Override

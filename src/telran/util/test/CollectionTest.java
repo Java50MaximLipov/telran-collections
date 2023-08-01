@@ -82,6 +82,7 @@ abstract class CollectionTest {
 		Integer[] expected = { 10, -20, 8, 14, 12 };
 		assertTrue(collection.removeIf(num -> num >= 30));
 		runArrayTest(expected, collection.toArray(new Integer[0]));
+		assertFalse(collection.contains(30));
 	}
 
 	@Test
@@ -111,6 +112,7 @@ abstract class CollectionTest {
 			bigCollection.clear();
 			assertEquals(0, bigCollection.size());
 		}
+
 	}
 
 	@Test
@@ -121,6 +123,7 @@ abstract class CollectionTest {
 		for (int i = 0; i < N_RUNS_CONTAINS; i++) {
 			bigCollection.contains(1000);
 		}
+
 	}
 
 	@Test

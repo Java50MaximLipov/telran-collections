@@ -25,6 +25,7 @@ public class LinkedList<T> implements List<T> {
 
 		@Override
 		public boolean hasNext() {
+
 			return current != null;
 		}
 
@@ -76,6 +77,7 @@ public class LinkedList<T> implements List<T> {
 		removedNode.obj = null;
 		prevNode.next = nextNode;
 		nextNode.prev = prevNode;
+
 	}
 
 	private void removeTail() {
@@ -84,6 +86,7 @@ public class LinkedList<T> implements List<T> {
 		tail.prev = null;
 		prevTail.next = null;
 		tail = prevTail;
+
 	}
 
 	private void removeHead() {
@@ -96,9 +99,11 @@ public class LinkedList<T> implements List<T> {
 			head = nextHead;
 			nextHead.prev = null;
 		}
+
 	}
 
 	void addNode(int index, Node<T> node) {
+
 		if (index == size) {
 			addTail(node);
 		} else if (index == 0) {
@@ -107,9 +112,11 @@ public class LinkedList<T> implements List<T> {
 			addMiddle(index, node);
 		}
 		size++;
+
 	}
 
 	private void addMiddle(int index, Node<T> node) {
+
 		Node<T> nextNode = getNode(index);
 		Node<T> prevNode = nextNode.prev;
 		node.next = nextNode;
@@ -123,6 +130,7 @@ public class LinkedList<T> implements List<T> {
 		node.next = head;
 		head.prev = node;
 		head = node;
+
 	}
 
 	void addTail(Node<T> node) {
@@ -137,6 +145,7 @@ public class LinkedList<T> implements List<T> {
 
 	@Override
 	public int size() {
+
 		return size;
 	}
 
@@ -150,6 +159,7 @@ public class LinkedList<T> implements List<T> {
 		indexValidation(index, true);
 		Node<T> node = new Node<>(obj);
 		addNode(index, node);
+
 	}
 
 	@Override
@@ -159,7 +169,8 @@ public class LinkedList<T> implements List<T> {
 		return node.obj;
 	}
 
-	Node<T> getNode(int index) {
+	private Node<T> getNode(int index) {
+
 		return index < size / 2 ? getNodeFromHead(index) : getNodeFromTail(index);
 	}
 

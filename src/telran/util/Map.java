@@ -26,6 +26,7 @@ public interface Map<K, V> {
 		private V value;
 
 		public Entry(K key, V value) {
+
 			this.key = key;
 			this.value = value;
 		}
@@ -44,6 +45,7 @@ public interface Map<K, V> {
 
 		@Override
 		public int compareTo(Entry<K, V> o) {
+
 			return ((Comparable<K>) key).compareTo(o.key);
 		}
 	}

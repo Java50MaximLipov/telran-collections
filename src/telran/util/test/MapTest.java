@@ -45,10 +45,12 @@ abstract class MapTest {
 	@SuppressWarnings("unchecked")
 	@Test
 	void entrySetTest() {
+
 		Entry<String, Integer>[] entriesExpected = new Entry[keys.length];
 		for (int i = 0; i < keys.length; i++) {
 			entriesExpected[i] = new Entry<>(keys[i], values[i]);
 		}
+		;
 		entriesExpected = getEntriesExpected(entriesExpected);
 		Entry<String, Integer>[] entriesActual = getEntriesActual(map.entrySet().toArray(new Entry[0]));
 		assertArrayEquals(entriesExpected, entriesActual);

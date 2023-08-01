@@ -34,7 +34,6 @@ public abstract class AbstractMap<K, V> implements Map<K, V> {
 
 	@Override
 	public int size() {
-
 		return set.size();
 	}
 

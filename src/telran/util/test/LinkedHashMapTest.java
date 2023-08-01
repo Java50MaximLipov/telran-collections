@@ -15,27 +15,33 @@ public class LinkedHashMapTest extends MapTest {
 
 	@Override
 	protected String[] getKeysActual(String[] keys) {
+
 		return keys;
 	}
 
 	@Override
 	protected Entry<String, Integer>[] getEntriesActual(Entry<String, Integer>[] entries) {
+
 		return entries;
 	}
 
 	protected Entry<String, Integer>[] getEntriesExpected(Entry<String, Integer>[] entries) {
+
 		return entries;
 	}
 
 	protected String[] getKeysExpected(String[] keys) {
+
 		return keys;
 	}
 
 	protected Integer[] getValuesExpected(Integer[] values) {
+
 		return values;
 	};
 
 	protected Integer[] getValuesActual(Integer[] values) {
+
 		return values;
 	}
 }
